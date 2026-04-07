@@ -1,9 +1,10 @@
 [phases.setup]
-nixPkgs = ["python3", "ffmpeg"]
+nixPkgs = ["python3", "ffmpeg", "pip"]
 
 [phases.install]
 cmds = [
-  "pip install yt-dlp"
+  "pip3 install --upgrade pip",
+  "pip3 install yt-dlp"
 ]
 
 [start]
