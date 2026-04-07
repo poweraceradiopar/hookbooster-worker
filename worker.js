@@ -6,4 +6,9 @@ if (!video_url) {
   throw new Error("No video_url provided");
 }
 
-await run(`yt-dlp -f "mp4" --no-check-certificates --geo-bypass -o "${inputPath}" "${video_url}"`);
+// safer yt-dlp command
+const downloadCmd = `yt-dlp -f best -o "${inputPath}" "${video_url}"`;
+
+console.log("RUNNING:", downloadCmd);
+
+await run(downloadCmd);
