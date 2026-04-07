@@ -1,7 +1,12 @@
-[phases.setup]
-nixPkgs = ["ffmpeg", "yt-dlp"]
-
-[start]
-cmd = "node worker.js"
+# nixpacks.toml
 [build]
+# List all required packages for video processing
 packages = ["ffmpeg", "yt-dlp", "python3", "bash"]
+
+[environment]
+# Optional: set any environment variables here
+# Example: BASE_OUTPUT="./outputs"
+
+[commands]
+# Optional build commands, if needed
+# Example: "mkdir -p ./outputs"
