@@ -1,17 +1,10 @@
-# nixpacks.toml
-[build]
-packages = [
-  "ffmpeg",         # for video processing
-  "python3",        # yt-dlp dependency
-  "bash",           # shell support
-  "coreutils",      # safe filesystem commands
-  "yt-dlp"          # YouTube downloader
+[phases.setup]
+nixPkgs = ["python3", "ffmpeg"]
+
+[phases.install]
+cmds = [
+  "pip install yt-dlp"
 ]
 
-[environment]
-# folder for outputs
-OUTPUT_DIR="./outputs"
-
-[commands]
-# create outputs folder
-"mkdir -p $OUTPUT_DIR"
+[start]
+cmd = "node worker.js"
