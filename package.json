@@ -2,7 +2,6 @@
   "name": "hookbooster-worker",
   "version": "1.0.0",
   "type": "module",
-  "main": "worker.js",
   "scripts": {
     "start": "node worker.js"
   },
