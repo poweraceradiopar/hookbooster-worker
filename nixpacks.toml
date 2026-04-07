@@ -3,3 +3,5 @@ nixPkgs = ["ffmpeg", "yt-dlp"]
 
 [start]
 cmd = "node worker.js"
+[build]
+packages = ["ffmpeg", "yt-dlp", "python3", "bash"]
