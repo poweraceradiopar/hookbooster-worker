@@ -7,16 +7,14 @@ const app = express();
 app.use(express.json());
 
 const run = util.promisify(exec);
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 8080;
 
 const OUTPUT_DIR = "./outputs";
 if (!fs.existsSync(OUTPUT_DIR)) fs.mkdirSync(OUTPUT_DIR);
 
-// ===== MAIN PROCESS ENDPOINT =====
 app.post("/process", async (req, res) => {
   try {
     const { video_url, style, aspect_ratio } = req.body;
-
     console.log("Incoming request:", req.body);
 
     if (!video_url) {
@@ -112,19 +110,14 @@ function getTextStyle(style, text) {
   switch (style) {
     case "Bold Viral":
       return `drawtext=text='${escaped}':fontcolor=white:fontsize=60:borderw=4:x=(w-text_w)/2:y=h-200`;
-
     case "Minimal Clean":
       return `drawtext=text='${escaped}':fontcolor=white:fontsize=30:x=(w-text_w)/2:y=h-100`;
-
     case "Meme Style":
       return `drawtext=text='${escaped.toUpperCase()}':fontcolor=white:fontsize=70:borderw=6:x=(w-text_w)/2:y=50`;
-
     case "Podcast":
       return `drawtext=text='${escaped}':fontcolor=white:fontsize=28:x=(w-text_w)/2:y=h-80`;
-
     case "Highlight Words":
       return `drawtext=text='${escaped}':fontcolor=yellow:fontsize=60:borderw=3:x=(w-text_w)/2:y=h-200`;
-
     default:
       return `drawtext=text='${escaped}':fontcolor=white:fontsize=40:x=(w-text_w)/2:y=h-120`;
   }
