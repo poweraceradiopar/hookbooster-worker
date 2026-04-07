@@ -1,12 +1,17 @@
 # nixpacks.toml
 [build]
-# List all required packages for video processing
-packages = ["ffmpeg", "yt-dlp", "python3", "bash"]
+packages = [
+  "ffmpeg",         # for video processing
+  "python3",        # yt-dlp dependency
+  "bash",           # shell support
+  "coreutils",      # safe filesystem commands
+  "yt-dlp"          # YouTube downloader
+]
 
 [environment]
-# Optional: set any environment variables here
-# Example: BASE_OUTPUT="./outputs"
+# folder for outputs
+OUTPUT_DIR="./outputs"
 
 [commands]
-# Optional build commands, if needed
-# Example: "mkdir -p ./outputs"
+# create outputs folder
+"mkdir -p $OUTPUT_DIR"
